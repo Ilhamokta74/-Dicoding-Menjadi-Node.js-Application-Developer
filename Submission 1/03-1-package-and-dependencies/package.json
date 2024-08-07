@@ -1,0 +1,20 @@
+{
+  "name": "03-1-package-and-dependencies",
+  "version": "1.0.0",
+  "description": "> **Tugas**: Lakukan beberapa hal berikut di dalam folder ini: 1. Inisialisasi package Node.js. Anda dapat menggunakan cara apa pun. 2. Tambahkan package `lodash` sebagai production dependencies dengan versi major 3, sedangkan versi minor dan patch bebas. 3. Tambahkan package `nodemon` sebagai development dependencies dengan versi major 2, sedangkan versi minor dan patch bebas. 4. Buat package script `start` yang menjalankan file `app.js` dengan `node`. 5. Buat package script `dev` yang menjalankan file `app.js` dengan `nodemon`.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1"
+  }
+}
