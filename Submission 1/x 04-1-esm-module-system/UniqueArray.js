@@ -11,3 +11,4 @@ class UniqueArray extends Array {
 }
 
 // @TODO: ekspor class UniqueArray
+export default UniqueArray;

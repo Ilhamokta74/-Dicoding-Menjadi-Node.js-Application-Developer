@@ -7,3 +7,4 @@ function reword(...chars) {
 }
 
 // @TODO ekspor function `unword` dan `reword`
+module.exports = { unword, reword };

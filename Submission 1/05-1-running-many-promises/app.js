@@ -1,24 +1,23 @@
 const { getUserInfo, getUserOrders, getUserCartItems } = require('./utils');
 
-function getUserData(userId) {
-  /**
-   * @TODO
-   * Dapatkan nilai:
-   *  1. `userInfo` dari fungsi `getUserInfo`
-   *  2. `userOrders` dari fungsi `getUserOrders`
-   *  3. `userCartItems` dari fungsi `getUserCartItems`
-   *
-   *  Kemudian kembalikan fungsi asinkron ini dengan nilai-nilai di atas dalam bentuk objek.
-   *  Struktur objek yang diharapkan dari yang dikembalikan oleh fungsi ini:
-   *  {
-   *    userInfo: { ... }
-   *    userOrders: [ ... ],
-   *    userCartItems: [ ... ]
-   *  }
-   *
-   *  Jika ada salah satu Promise yang rejected, kembalikan fungsi ini dengan nilai `null`.
-   */
+async function getUserData(userId) {
+  try {
+    // 1. `userInfo` dari fungsi `getUserInfo`
+    const userInfo =  await getUserInfo(userId)
+    // 2. `userOrders` dari fungsi `getUserOrders`
+    const userOrders = await getUserOrders(userId)
+    // 3. `userCartItems` dari fungsi `getUserCartItems`
+    const userCartItems = await getUserCartItems(userId)
 
+    // return data
+    return {
+      userInfo,
+      userOrders,
+      userCartItems
+    }
+  } catch (error) {
+    return null
+  }
 }
 
 function main() {
