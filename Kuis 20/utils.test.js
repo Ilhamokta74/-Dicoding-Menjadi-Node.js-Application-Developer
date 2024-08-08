@@ -1,24 +1,18 @@
 const assert = require('assert');
 const { properCaseProm } = require('./utils');
 
-// Unit test untuk skenario positif
-(async () => {
-  try {
-    const result = await properCaseProm('hello world');
-    assert.strictEqual(result, 'Hello World', 'Hasilnya harus "Hello World"');
-    console.log('Skenario positif berhasil!');
-  } catch (error) {
-    console.error('Skenario positif gagal:', error);
-  }
-})();
+// Test positive scenario
+assert.doesNotReject(async () => {
+  const result = await properCaseProm('hello world');
+  assert.strictEqual(result, 'Hello World');
+  console.log('Positive scenario passed successfully');
+});
 
-// Unit test untuk skenario negatif
-(async () => {
-  try {
-    await properCaseProm(123); // Input bukan string
-    console.error('Skenario negatif gagal: Error tidak dilempar');
-  } catch (error) {
-    assert.strictEqual(error.message, 'value harus bertipe string', 'Pesan error tidak sesuai');
-    console.log('Skenario negatif berhasil!');
-  }
-})();
+// Test negative scenario
+assert.rejects(async () => {
+  await properCaseProm(123); // Passing a non-string value
+}, {
+  name: 'Error',
+  message: 'value harus bertipe string'
+});
+console.log('Negative scenario passed successfully');
