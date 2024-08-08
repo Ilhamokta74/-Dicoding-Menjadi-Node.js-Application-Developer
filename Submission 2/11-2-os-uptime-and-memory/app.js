@@ -1,6 +1,16 @@
+const os = require('os');
+
 setTimeout(() => {
-  console.log(null); // @TODO cetak uptime dari process
-  console.log(null); // @TODO cetak uptime dari sistem operasi
-  console.log(null); // @TODO cetak total memori yang tersedia di sistem operasi
-  console.log(null); // @TODO cetak total heap memori
+    // Print the uptime of the process in seconds
+    console.log(process.uptime());
+
+    // Print the uptime of the operating system in seconds
+    console.log(os.uptime());
+
+    // Print the total memory available in the operating system in bytes
+    console.log(os.totalmem());
+
+    // Print the total heap memory in bytes
+    const { heapTotal } = process.memoryUsage();
+    console.log(heapTotal);
 }, 1000);
