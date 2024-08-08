@@ -1,20 +1,17 @@
-const data = require('./data');
-const { Readable } = require('stream');
+const { Readable } = require('stream'); // Mengimpor Readable stream dari modul 'stream'
+const data = require('./data'); // Mengimpor data dari file 'data.js'
 
 // Membuat Readable stream dari array data
-const readable = new Readable({
-  read() {
-    data.forEach(item => this.push(item));
-    this.push(null); // Menandakan akhir dari stream
-  }
+const readable = Readable.from(data);
+
+// Menangani event 'data' untuk membaca dan menampilkan setiap chunk dari stream
+readable.on('data', (chunkOfData) => {
+  // Mengonversi chunk dari buffer ke string dan menampilkannya di console
+  console.log(chunkOfData.toString());
 });
 
-// Membaca dan menampilkan setiap nilai dari readable stream
-readable.on('data', chunk => {
-  console.log(chunk.toString());
-});
-
-// Menampilkan pesan "selesai membaca" ketika proses pembacaan sudah selesai
+// Menangani event 'end' yang dipicu ketika semua data telah dibaca
 readable.on('end', () => {
+  // Menampilkan pesan 'selesai membaca' ketika proses pembacaan selesai
   console.log('selesai membaca');
 });
