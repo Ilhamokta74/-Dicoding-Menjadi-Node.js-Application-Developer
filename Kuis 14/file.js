@@ -1,0 +1,1 @@
+'Anda berhasil membaca berkas di dalam file.js!'
