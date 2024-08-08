@@ -7,7 +7,7 @@ const writable = createWritable(data);
 
 // Menangani event 'finish' yang dipicu ketika semua data telah ditulis
 writable.on('finish', () => {
-  console.log('selesai menulis');
+  console.log(data); // Menampilkan array data yang berisi hasil penulisan
 });
 
 // Menulis setiap item ke dalam writable stream
