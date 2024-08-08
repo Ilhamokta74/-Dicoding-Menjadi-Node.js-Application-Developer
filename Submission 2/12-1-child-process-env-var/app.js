@@ -12,9 +12,18 @@
 
 // Tulis kode impor di bawah ini
 
+const { spawnSync } = require('child_process');
+
 function main(myEnvVar) {
-  // Tulis jawaban Anda di bawah ini
-  
+    // Tulis jawaban Anda di bawah ini
+    const child = spawnSync(process.execPath, ['run-me.js'], {
+        env: { MY_ENV_VAR: myEnvVar }
+    });
+
+    // Proses exit code setelah menjalankan child process
+    process.exit(0);
+
+    return child;
 }
 
 module.exports = main;
