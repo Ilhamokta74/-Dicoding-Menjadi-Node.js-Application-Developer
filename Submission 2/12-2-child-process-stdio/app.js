@@ -12,5 +12,15 @@
 const { spawn } = require('child_process');
 
 function main(command, args) {
-  return spawn();
+    const options = {
+        stdio: ["ignore", "inherit", "pipe"], // Konfigurasi STDIO sesuai ketentuan
+    };
+    const child = spawn(command, args, options); // args digunakan langsung karena sudah berupa array
+
+    // Menangani output error dari child process
+    // child.stderr.pipe(process.stderr);
+
+    return child;
 }
+
+module.exports = main;
