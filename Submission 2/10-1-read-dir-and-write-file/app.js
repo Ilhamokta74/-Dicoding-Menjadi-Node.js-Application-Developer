@@ -14,10 +14,36 @@
  */
 
 const fs = require('fs');
+const path = require('path');
 
 function readDirAndWriteFile() {
-  // Tulis jawaban di bawah ini
-  
+    // Tulis jawaban di bawah ini
+    const directoryPath = __dirname;
+
+    // Step 1: Read all items in the current directory
+    fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+            return console.error('Unable to scan directory: ' + err);
+        }
+
+        // Step 2: Filter only directories
+        const folders = files.filter(file => {
+            const filePath = path.join(directoryPath, file);
+            return fs.statSync(filePath).isDirectory();
+        });
+
+        // Step 3: Sort folders in ascending order
+        folders.sort((a, b) => a.localeCompare(b));
+
+        // Step 4: Write the folder names into 'out.txt'
+        fs.writeFile('out.txt', folders.join(','), err => {
+            if (err) {
+                return console.error('Error writing to file: ' + err);
+            }
+            console.log('Folder names written to out.txt');
+        });
+    });
+
 }
 
 readDirAndWriteFile();
